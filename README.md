@@ -11,6 +11,3 @@ $ pip install sentry-yzj
 ## 使用
 
 在`项目`的所有集成页面找到`YunZj`插件，启用，并设置`对应的参数`
-
-![plugin](https://github.com/slowwalkerlcr/sentry-yzj/tree/master/docs/images/setting.png)
-
