@@ -1,5 +1,9 @@
 # coding: utf-8
-
+import sys
+defaultencoding = 'utf-8'
+if sys.getdefaultencoding() != defaultencoding:
+    reload(sys)
+    sys.setdefaultencoding(defaultencoding)
 import json
 import time
 import requests
@@ -8,8 +12,6 @@ from sentry.plugins.bases.notify import NotificationPlugin
 
 import sentry_yzj
 from .forms import YZJOptionsForm
-
-DingTalk_API = "https://oapi.dingtalk.com/robot/send?access_token={token}"
 
 
 class YZJPlugin(NotificationPlugin):
@@ -64,7 +66,6 @@ class YZJPlugin(NotificationPlugin):
         pubtokenBody.sort();
         pubtokenStr=utils.str_encrypt("".join(pubtokenBody));
         title = u"New alert from {}".format(event.project.slug)
-        norityUser = yzj_notify.split(",");
 
         data = {
             "from": {
@@ -89,19 +90,6 @@ class YZJPlugin(NotificationPlugin):
                 )
             }
         }
-        '''
-        data = {
-            "msgtype": "markdown",
-            "markdown": {
-                "title": title,
-                "text": u"#### {title} \n > {message} [href]({url})".format(
-                    title=title,
-                    message=event.message,
-                    url=u"{}events/{}/".format(group.get_absolute_url(), event.id),
-                )
-            }
-        }
-        '''
         requests.post(
             url=send_url,
             headers={"Content-Type": "application/json"},
