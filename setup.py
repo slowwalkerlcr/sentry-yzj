@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="sentry-yzj",
-    version='0.0.5',
+    version='0.0.6',
     author='slowwalkerlcr',
     author_email='slowwlakerlcr@163.com',
     url='https://github.com/slowwalkerlcr/sentry-yzj',
